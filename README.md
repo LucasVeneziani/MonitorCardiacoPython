@@ -1,5 +1,14 @@
 # Trabalho em grupo Projeto de Monitor Cardiaco com Simulação no Python e Wokwi
 
+## Integrantes
+
+### Lucas Lemos Veneziani
+### Jose Victor Xavier Silva
+### Reinaldo Santana Arantes
+### Daniel Romão Mathias
+### Luiz Henrique da Silva Guizi
+
+
 Projeto no Wokwi: https://wokwi.com/projects/479872168818208769
 
 precisa instalar dependencias do python para funcionar o painel
