@@ -5,9 +5,13 @@
 ### Lucas Lemos Veneziani
 ### Jose Victor Xavier Silva
 ### Reinaldo Santana Arantes
+---
+Na apresentação:
+
 ### Daniel Romão Mathias
 ### Luiz Henrique da Silva Guizi
 
+---
 
 Projeto no Wokwi: https://wokwi.com/projects/479872168818208769
 
