@@ -1,3 +1,5 @@
+# Trabalho em grupo Projeto de Monitor Cardiaco com Simulação no Python e Wokwi
+
 Projeto no Wokwi: https://wokwi.com/projects/479872168818208769
 
 precisa instalar dependencias do python para funcionar o painel
@@ -11,18 +13,18 @@ Monitor Cardíaco IoT: ESP32, MQTT com Python
 
 O projeto simula batimentos cardíacos em um ESP32 no Wokwi e envia a telemetria por MQTT, que guarda os dados e mostra os gráficos.
 
-´´´
-1. Arquitetura
-´´´
+
+# 1. Arquitetura
+
    
 Os dados vão em um sentido só: do ESP32 ao Painel no Python, que guarda o histórico e mostra os gráficos.
 1.	ESP32 (Wokwi): gera batimentos simulados, calcula média, desvio padrão e coeficiente de variação dos intervalos RR, classifica o ritmo e aciona LED, relé e LCD.
 2.	Broker MQTT do Hive: broker.hivemq.com, porta 1883. Recebe as publicações em channels/<channelID>/publish e grava cada valor no campo correspondente do canal.
 3.	Painel do Python: guarda o histórico e desenha um gráfico por campo, que acompanha pelo navegador.
 
-´´´
-2. Materiais fornecidos
-´´´
+
+# 2. Materiais fornecidos
+
    
 Material	Link	Papel no projeto
 Exemplo 20 do professor (ESP32 + MQTT + ADC)	GitHub
@@ -35,9 +37,9 @@ Projeto "Cardiaco" no Wokwi (autor: lucasveneziani)	Wokwi
 Simulação do ESP32 com potenciômetro, chave, botão, LED, relé e LCD 16x2 I2C
 
 
-´´´
-3. Simulação no Wokwi
-´´´
+
+# 3. Simulação no Wokwi
+
    
 O sketch simula um monitor cardíaco: o potenciômetro define a frequência (30 a 200 BPM), e uma chave liga o modo "ataque cardíaco" (ritmo caótico com pausas). Usa as bibliotecas WiFi, PubSubClient, Wire e LiquidCrystal_I2C, e conecta à rede Wokwi-GUEST.
 Componente	Pino (ESP32)	Função
@@ -58,9 +60,8 @@ NORMAL	Nenhuma das condições acima
 
 No modo normal, o intervalo é 60000 / BPM com variação natural de ±3%. No modo ataque, 8% dos intervalos são pausas de 3,2 a 4,5 s e o restante varia de 220 a 1300 ms, o que dispara arritmia e, nas pausas, assistolia.
 
-´´´
-4. Telemetria com MQTT
-´´´
+
+# 4. Telemetria com MQTT
    
 O ESP32 publica por MQTT no broker do Hive, que grava os valores nos campos de um canal e desenha um gráfico por campo em um painel em Python. 
 Item	Valor
@@ -83,9 +84,9 @@ field8	uptime_s	Segundos desde que o ESP32 ligou.
 status	estado	AGUARDANDO, NORMAL, BRADICARDIA, TAQUICARDIA, ARRITMIA ou ASSISTOLIA.
 
 
-´´´
-5. Artigos de referência
-´´´
+
+# 5. Artigos de referência
+
    
 Os três trabalhos usam ESP32 para monitorar sinais vitais e enviar dados à nuvem. Nenhum simula o sinal. O IJSREM e o TFG também usam o ThingSpeak, e só o TFG envia os dados a ele por MQTT, como este projeto.
 Trabalho	Hardware	Protocolo e nuvem	Resultado principal
@@ -98,9 +99,8 @@ ESP32 + MAX30100 (frequência cardíaca e SpO₂) e LM35 (temperatura)	MQTT para
 
 Ligação com o projeto. O TFG sugere como trabalho futuro justamente o que o ESP32 simulado já faz: classificar o sinal e disparar alerta de risco. Os artigos também mostram os problemas que a simulação evita (ruído do sensor e instabilidade do Wi-Fi) e que valem como limitações a citar.
 
-´´´
-6. Como executar e testar
-´´´
+
+# 6. Como executar e testar
 
 1.	Baixe todas as dependências do Painel do Python no repositório de github, rode o programa e configure o broker com os mesmos dados que o Wokwi
 2.	Rode o Projeto no Wokwi e configure as informações do broker
@@ -110,7 +110,7 @@ Ligação com o projeto. O TFG sugere como trabalho futuro justamente o que o ES
 6.	Gire o potenciômetro: field1 (BPM) acompanha, e valores acima de 120 ou abaixo de 50 mudam o status para TAQUICARDIA ou BRADICARDIA.
 7.	Mude a chave para ataque: field2 (desvio padrão) e field3 (CV) sobem, o status passa a ARRITMIA ou ASSISTOLIA e field6 (relé) vai a 1. Aperte o botão verde para silenciar o relé e volte a chave ao normal para o status voltar a NORMAL.
    
-7. Fontes
+# 7. Fontes
 
 https://github.com/profdanielrsousa/iot_e_aplicacoes/blob/main/ex20_esp32_SERVIDOR_MQTT_ADC.py
 https://wokwi.com/projects/479872168818208769
